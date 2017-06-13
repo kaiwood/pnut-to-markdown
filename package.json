@@ -6,6 +6,13 @@
   "scripts": {
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaiwood/pnut-to-markdown"
+  },
+  "bugs": {
+    "url": "https://github.com/kaiwood/pnut-to-markdown/issues"
+  },
   "keywords": [
     "pnut.io",
     "markdown",
