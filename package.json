@@ -24,7 +24,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "striptags": "^3.0.1",
+    "js-striphtml": "^1.1.2",
     "to-markdown": "^3.0.4"
   }
 }

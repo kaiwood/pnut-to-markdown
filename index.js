@@ -1,7 +1,7 @@
 "use strict";
 
-const toMarkdown = require("to-markdown");
-const strip = require("striptags");
+var toMarkdown = require("to-markdown");
+var strip = require("js-striphtml");
 
 /**
  * Strip every tag except "a" and "br"
@@ -10,7 +10,7 @@ const strip = require("striptags");
  * @returns {string}
  */
 function stripTags(input) {
-  return strip(input, ["a", "br"]);
+  return strip.stripTags(input, ["a", "br"]);
 }
 
 /**
@@ -20,7 +20,9 @@ function stripTags(input) {
  * @returns {string}
  */
 function stripBrackets(input) {
-  return input.replace(/<\/a>( \[[a-zA-Z.-]*\])/g, match => "</a>");
+  return input.replace(/<\/a>( \[[a-zA-Z.-]*\])/g, function(match) {
+    return "</a>";
+  });
 }
 
 /**
@@ -30,7 +32,14 @@ function stripBrackets(input) {
  * @returns {string}
  */
 function trimLines(input) {
-  return input.split("\n").map(line => line.trim()).join("\n") + "\n";
+  return (
+    input
+      .split("\n")
+      .map(function(line) {
+        return line.trim();
+      })
+      .join("\n") + "\n"
+  );
 }
 
 /**
@@ -40,13 +49,5 @@ function trimLines(input) {
  * @returns {string}
  */
 module.exports = function(input) {
-  let output = input;
-
-  output = stripTags(output);
-  output = stripBrackets(output);
-
-  output = toMarkdown(output);
-  output = trimLines(output);
-
-  return output;
+  return trimLines(toMarkdown(stripBrackets(stripTags(input))));
 };
