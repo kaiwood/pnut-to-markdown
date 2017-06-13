@@ -1,7 +1,7 @@
 {
   "name": "pnut-to-markdown",
   "version": "1.0.0",
-  "description": "Converts the output of the pnut.io API to Markdown",
+  "description": "Converts the output of the pnut.io API (back) to Markdown",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -16,11 +16,15 @@
     "email": "kwood@kwd.io",
     "url": "https://kwd.io"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jest": "^20.0.4"
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "dependencies": {
+    "striptags": "^3.0.1",
+    "to-markdown": "^3.0.4"
   }
 }
